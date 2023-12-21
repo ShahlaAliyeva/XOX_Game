@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+:root {
+  --playground-bg: rgb(228, 236, 255);
+  --button-border-color: rgb(88, 114, 172);
+  --modal-bg: rgb(255, 255, 255);
+  --text-color: rgb(29, 46, 84);
+}
+
+body {
+  background-color: var(--playground-bg);
+  color: var(--text-color);
+}
+
+h1 {
+  text-transform: capitalize;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 20%;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.grid-container {
+  display: grid;
+  width: 35rem;
+  height: 35rem;
+  margin: 1rem auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.playground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.playground:nth-child(1),
+.playground:nth-child(4),
+.playground:nth-child(7) {
+  border-right: 3px solid var(--button-border-color);
+}
+
+.playground:nth-child(3),
+.playground:nth-child(6),
+.playground:nth-child(9) {
+  border-left: 3px solid var(--button-border-color);
+}
+
+.playground:nth-child(1),
+.playground:nth-child(2),
+.playground:nth-child(3),
+.playground:nth-child(4),
+.playground:nth-child(5),
+.playground:nth-child(6) {
+  border-bottom: 3px solid var(--button-border-color);
+}
+
+/* Modal */
+
+.modal {
+  width: 30%;
+  height: 15rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: var(--modal-bg);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  z-index: 3;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+
+  > h2 {
+    font-size: 1.6rem;
+  }
+
+  > p {
+    font-size: 1.3rem;
+  }
+
+  > button {
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid var(--button-border-color);
+    background-color: var(--playground-bg);
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.modal.open {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  display: none;
+}
